@@ -1,0 +1,2 @@
+# PlainRSS
+Simple RSS Reader

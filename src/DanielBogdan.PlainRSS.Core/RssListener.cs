@@ -63,7 +63,7 @@ namespace DanielBogdan.PlainRSS.Core
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn($"{nameof(RssListener)} error", ex);
+                    Logger.Warn($"{nameof(RssListener)} exception", ex);
                 }
             }
         }

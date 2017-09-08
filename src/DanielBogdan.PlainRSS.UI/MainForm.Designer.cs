@@ -35,6 +35,7 @@ namespace DanielBogdan.PlainRSS.UI
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -46,7 +47,6 @@ namespace DanielBogdan.PlainRSS.UI
             this.toolTipMain = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStripList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.previewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rssItemBindingSource)).BeginInit();
@@ -107,6 +107,14 @@ namespace DanielBogdan.PlainRSS.UI
             this.startStopToolStripMenuItem.Size = new System.Drawing.Size(158, 28);
             this.startStopToolStripMenuItem.Text = "Start";
             this.startStopToolStripMenuItem.Click += new System.EventHandler(this.startStopToolStripMenuItem_Click);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Image = global::DanielBogdan.PlainRSS.UI.Properties.Resources.ic_delete_black_24dp_1x;
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(158, 28);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -198,13 +206,6 @@ namespace DanielBogdan.PlainRSS.UI
             this.previewToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.previewToolStripMenuItem.Text = "Preview";
             this.previewToolStripMenuItem.Click += new System.EventHandler(this.previewToolStripMenuItem_Click);
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Image = global::DanielBogdan.PlainRSS.UI.Properties.Resources.ic_delete_black_24dp_1x;
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(158, 28);
-            this.clearToolStripMenuItem.Text = "Clear";
             // 
             // MainForm
             // 

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -233,6 +234,10 @@ namespace DanielBogdan.PlainRSS.UI
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+            //Ignore server certificate check
+            ServicePointManager.Expect100Continue = false;
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
 
             rssItemBindingSource.DataSource = rssItems;
 
@@ -444,6 +449,8 @@ namespace DanielBogdan.PlainRSS.UI
                     {
                         if (IsFilteredOut(rssItem))
                         {
+                            Logger.Info($"{nameof(OnNewRss)} filtered out \"{rssItem.Title}\" pub date {rssItem.PubDate} link {rssItem.Link}");
+
                             filteredCounter++;
                             SetMainFormStatus();
                             return;
@@ -457,6 +464,7 @@ namespace DanielBogdan.PlainRSS.UI
                             this.rssItems.RemoveAt(rssItems.Count - 1);
                     }
 
+                    Logger.Info($"{nameof(OnNewRss)} shown item \"{rssItem.Title}\" pub date {rssItem.PubDate} link {rssItem.Link}");
 
                     SetMainFormStatus();
 

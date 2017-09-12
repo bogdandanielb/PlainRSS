@@ -35,12 +35,14 @@ namespace DanielBogdan.PlainRSS.Core
         {
             while (!stopped)
             {
-                try
+
+                foreach (var rssCategory in settings.RssCategories)
                 {
-                    foreach (var rssCategory in settings.RssCategories)
+                    foreach (var rssWebsite in rssCategory.RssWebsites)
                     {
-                        foreach (var rssWebsite in rssCategory.RssWebsites)
+                        try
                         {
+
                             if (stopped)
                                 return;
 
@@ -50,6 +52,10 @@ namespace DanielBogdan.PlainRSS.Core
                             if (settings.Delay > 0)
                                 Thread.Sleep(settings.Delay * 1000);
 
+
+                            Logger.Debug($"Processing website \"{rssWebsite.Name}\" link {rssWebsite.Link}");
+
+
                             var httpClient = new HttpClient(null, null,
                                 userAgents[StaticRandom.Next(0, userAgents.Count)], 60000);
 
@@ -57,17 +63,26 @@ namespace DanielBogdan.PlainRSS.Core
                             if (string.IsNullOrEmpty(html))
                                 continue;
 
+
                             ParseRss(html, rssCategory, rssWebsite);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Warn($"{nameof(RssListener)} exception", ex);
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    Logger.Warn($"{nameof(RssListener)} exception", ex);
-                }
+
             }
         }
 
+        /// <summary>
+        /// Parse XML content from RSS feed
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="rssCategory"></param>
+        /// <param name="rssWebsite"></param>
         private void ParseRss(string html, RssCategory rssCategory, RssWebsite rssWebsite)
         {
 

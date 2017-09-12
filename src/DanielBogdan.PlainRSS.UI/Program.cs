@@ -18,6 +18,8 @@ namespace DanielBogdan.PlainRSS.UI
         [STAThread]
         static void Main()
         {
+            Logger.Info($"Application sarted");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -37,7 +39,6 @@ namespace DanielBogdan.PlainRSS.UI
             }
             catch (Exception exception)
             {
-                Logger.Fatal($"{nameof(Program)} fatal exception", exception);
 
                 FatalExceptionHandler(exception);
             }
@@ -59,6 +60,8 @@ namespace DanielBogdan.PlainRSS.UI
                     + exceptionObject.ToString()
                 );
             }
+
+            Logger.Fatal($"{nameof(Main)} fatal exception", exception);
 
             MessageBox.Show(@"An application error occured. Please report this issue to your software vendor:" + Environment.NewLine + Environment.NewLine + exception.ToString(),
                 @"Unhandled exception",

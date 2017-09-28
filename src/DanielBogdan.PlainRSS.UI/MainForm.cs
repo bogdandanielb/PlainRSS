@@ -281,6 +281,7 @@ namespace DanielBogdan.PlainRSS.UI
 
             InitHotKey();
 
+
         }
 
 
@@ -572,8 +573,9 @@ namespace DanielBogdan.PlainRSS.UI
 
                     using (var largerBoldFont = new Font(e.Font, FontStyle.Bold))
                     {
+                        var color = ColorTranslator.FromHtml(rssItem.Category.Color);
                         e.Graphics.DrawString($" {rssItem.Category.Name} {rssItem.Website.Name}",
-                            largerBoldFont, new SolidBrush(e.ForeColor), point, StringFormat.GenericDefault);
+                            largerBoldFont, new SolidBrush(color), point, StringFormat.GenericDefault);
 
                         point.Offset(-1 * (int)drawWidth, largerFont.Height);
                     }

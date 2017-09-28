@@ -1,5 +1,6 @@
 using DanielBogdan.PlainRSS.Core.Domain;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DanielBogdan.PlainRSS.UI
@@ -27,6 +28,7 @@ namespace DanielBogdan.PlainRSS.UI
                 return;
 
             rssCategory.Name = this.textBoxName.Text;
+            rssCategory.Color = ColorTranslator.ToHtml(this.labelColor.BackColor);
             DialogResult = DialogResult.OK;
         }
 
@@ -53,6 +55,17 @@ namespace DanielBogdan.PlainRSS.UI
         private void GroupForm_Load(object sender, EventArgs e)
         {
             this.textBoxName.Text = rssCategory.Name;
+            this.labelColor.BackColor = ColorTranslator.FromHtml(RssCategory.Color);
+        }
+
+        private void labelColor_Click(object sender, EventArgs e)
+        {
+            colorDialogPicker.Color = this.labelColor.BackColor;
+            colorDialogPicker.FullOpen = true;
+            if (colorDialogPicker.ShowDialog(this) == DialogResult.OK)
+            {
+                this.labelColor.BackColor = colorDialogPicker.Color;
+            }
         }
     }
 }

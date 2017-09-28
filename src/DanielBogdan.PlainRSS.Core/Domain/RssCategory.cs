@@ -7,11 +7,12 @@ namespace DanielBogdan.PlainRSS.Core.Domain
     public class RssCategory
     {
         private string name;
+        private string color = "#FFFFFF";
 
-
-        public RssCategory(string name)
+        public RssCategory(string name, string color)
         {
             Name = name;
+            Color = color;
         }
 
         public RssCategory()
@@ -30,8 +31,16 @@ namespace DanielBogdan.PlainRSS.Core.Domain
             }
         }
 
+        public string Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
+
 
         public BindingList<RssWebsite> RssWebsites { get; set; }
+
 
         public override string ToString()
         {

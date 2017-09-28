@@ -281,7 +281,6 @@ namespace DanielBogdan.PlainRSS.UI
 
             InitHotKey();
 
-
         }
 
 
